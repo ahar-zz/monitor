@@ -1,0 +1,9 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: Monitoring Service
+feign:
+  hystrix:
+    enabled: true

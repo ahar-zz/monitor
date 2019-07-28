@@ -4,6 +4,7 @@ server:
 spring:
   application:
     name: Monitoring Service
+
 feign:
   hystrix:
     enabled: true

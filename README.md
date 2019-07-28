@@ -1,4 +1,4 @@
-##Monitoring System
+**Monitoring Service**
 
 ### Instructions
 If you don't have gradle installed on your server, replace ```gradle``` with ```./gradlew``` to use gradle wrapper
@@ -13,11 +13,11 @@ _**Run tests**_
 - From the project root:<br />
 ```gradle test```
 
-###Technologies
+**Technologies**
 - Spring-boot (2.1.6.RELEASE)
 - Quartz Scheduler (http://www.quartz-scheduler.org/)
 
-###Tips
+**Tips**
 - I didn't use anything like lombok, by a reason :)
 - There is a possibility to chose different implementation for scheduler(TriggerTask, etc.). 
 However, Quartz Scheduler was chosen by me because I have never worked with it and was curious about it. Looks good to me. 

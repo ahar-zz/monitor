@@ -4,11 +4,11 @@
 If you don't have gradle installed on your server, replace ```gradle``` with ```./gradlew``` to use gradle wrapper
 
 _**Straight run**_
-- From the project root:<br /> ```gradle bootRun```
+- From the project root:<br /> ```gradle bootRun``` <br/>
 _**Building jar**_
 - From the project root:<br /> ```gradle build``` <br/>
-```java -jar build/libs/monitor-0.0.1-SNAPSHOT.jar ```
-- API docs:<br /> ```http://127.0.0.1:8000/swagger-ui.html```
+```java -jar build/libs/monitor-0.0.1-SNAPSHOT.jar ```<br/>
+- API docs:<br /> ```http://127.0.0.1:8000/swagger-ui.html```<br/>
 _**Run tests**_
 - From the project root:<br />
 ```gradle test```

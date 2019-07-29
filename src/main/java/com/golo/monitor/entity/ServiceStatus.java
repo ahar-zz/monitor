@@ -1,7 +1,6 @@
 package com.golo.monitor.entity;
 
 import java.util.Date;
-import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

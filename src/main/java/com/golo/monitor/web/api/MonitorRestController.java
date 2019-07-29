@@ -16,12 +16,12 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/api/monitor")
-public class MonitoringRestController {
+public class MonitorRestController {
 
     private final MonitorService service;
 
     @Autowired
-    public MonitoringRestController(MonitorService service) {
+    public MonitorRestController(MonitorService service) {
         this.service = service;
     }
 

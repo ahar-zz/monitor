@@ -6,7 +6,7 @@ import feign.RequestLine;
 import org.springframework.cloud.openfeign.FeignClient;
 import rx.Observable;
 
-@FeignClient(name = "merchant-client", fallback = com.golo.monitor.client.fallback.MerchantClientFallback.class)
+@FeignClient(name = "merchant-client")
 public interface MerchantClient {
 
     @RequestLine("GET /accountmanagement/monitor")

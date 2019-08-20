@@ -8,6 +8,7 @@ import com.golo.monitor.repository.ServiceStatusRepository;
 import com.golo.monitor.scheduler.MonitorScheduler;
 import com.google.common.base.Strings;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import feign.hystrix.HystrixFeign;
 import feign.jackson.JacksonDecoder;
 import org.slf4j.Logger;
@@ -42,13 +43,9 @@ public class MonitorService {
 
     private void newTask(String url, int interval) {
         schedulerHelper.scheduleJobWithInterval(interval);
-        if (!Strings.isNullOrEmpty(url)) {
-            apiClient = HystrixFeign.builder()
-                    .decoder(new JacksonDecoder())
-                    .target(MerchantClient.class, url);
-        } else {
-            stop();
-        }
+        apiClient = HystrixFeign.builder()
+                .decoder(new JacksonDecoder())
+                .target(MerchantClient.class, url);
     }
 
     public void stop() {
@@ -56,17 +53,18 @@ public class MonitorService {
         apiClient = null;
     }
 
+    @HystrixCommand(fallbackMethod = "defaultMerchantResponse")
     public void checkMerchant(){
         if (apiClient != null) {
             apiClient.monitor()
                     .map(response -> response.getStatus().equals("READY") ?
                             statusFactory.up() : statusFactory.down())
-                    .onErrorResumeNext(throwable -> {
-                        LOGGER.error("Request failed", throwable);
-                        return Observable.just(statusFactory.down());
-                    })
                     .subscribe(serviceStatusRepository::save);
         }
+    }
+
+    public void defaultMerchantResponse() {
+        serviceStatusRepository.save(statusFactory.down());
     }
 
     public ReportDto getReport(){

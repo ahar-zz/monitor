@@ -4,7 +4,17 @@ server:
 spring:
   application:
     name: Monitoring Service
+  cloud:
+    circuit:
+      breaker:
+        enabled: true
 
 feign:
   hystrix:
     enabled: true
+
+hystrix:
+  command:
+    default:
+      circuitBreaker:
+        enabled: true

@@ -51,6 +51,10 @@ dependencies {
 	// Quartz
 	implementation 'org.quartz-scheduler:quartz:2.3.1'
 
+	// OkHttp client
+	compile group: 'io.github.openfeign', name: 'feign-okhttp', version: '10.3.0'
+	compile group: 'io.github.openfeign', name: 'feign-httpclient', version: '10.3.0'
+
 	// Tests
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

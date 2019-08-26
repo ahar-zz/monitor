@@ -8,9 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -26,21 +24,21 @@ public class MonitorRestController {
     }
 
     @ApiOperation(value = "API call to start monitoring server")
-    @RequestMapping(value = "/start", method = RequestMethod.POST)
+    @PostMapping(value = "/start")
     public ResponseEntity startMonitoring(@RequestBody @Valid MerchantServerDto propertiesDto) {
         service.start(propertiesDto);
         return ResponseEntity.ok().build();
     }
 
     @ApiOperation(value = "API call to stop monitoring server")
-    @RequestMapping(value = "/stop", method = RequestMethod.GET)
+    @PostMapping(value = "/stop")
     public ResponseEntity stopMonitoring() {
         service.stop();
         return ResponseEntity.ok().build();
     }
 
     @ApiOperation(value = "API call to get report of last monitoring session")
-    @RequestMapping(value = "/report", method = RequestMethod.GET)
+    @GetMapping(value = "/report")
     public ResponseEntity<ReportDto> getReport() {
         ReportDto serviceStatus = service.getReport();
         return ResponseEntity.ok(serviceStatus);

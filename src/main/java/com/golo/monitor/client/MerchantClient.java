@@ -4,12 +4,11 @@ import com.golo.monitor.entity.MerchantResponse;
 
 import feign.RequestLine;
 import org.springframework.cloud.openfeign.FeignClient;
-import rx.Observable;
 
 @FeignClient(name = "merchant-client")
 public interface MerchantClient {
 
     @RequestLine("GET /accountmanagement/monitor")
-    Observable<MerchantResponse> monitor();
+    MerchantResponse monitor();
 
 }

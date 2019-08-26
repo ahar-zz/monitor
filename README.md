@@ -23,3 +23,8 @@ _**Run tests**_
 However, Quartz Scheduler was chosen by me because I have never worked with it and was curious about it. Looks good to me. 
 - Created minimal test coverage just to let you understand, that there is no problem for me. 
 - I didn't include checkstyle, as long as this is just test task :) Usually, I use it
+
+
+*URL*
+For up status: https://api.test.paysafe.com/
+For down status: Everything else
